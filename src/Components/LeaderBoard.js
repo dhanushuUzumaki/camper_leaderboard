@@ -10,7 +10,7 @@ class Leaderboard extends React.Component {
     this.state = {
       fetchingData: true
     };
-    this.renderLeaderboard = (props, state) => this._renderLeaderboard(props, state);
+    this.renderLeaderboard = () => this._renderLeaderboard();
   }
 
   componentDidMount () {
@@ -25,15 +25,15 @@ class Leaderboard extends React.Component {
           fetchingData: false
         });
       }))
-      .catch(e => {
+      .catch((e) => {
         this.setState({
           error: e
         });
       });
   }
 
-  _renderLeaderboard (props, state) {
-    const { fetchingData, recent, allTime, error } = state;
+  _renderLeaderboard () {
+    const { fetchingData, recent, allTime, error } = this.state;
     if (fetchingData) {
       return (
         <div className="overlay">
@@ -46,24 +46,21 @@ class Leaderboard extends React.Component {
           Oops! Something went wrong. Please try after some time.
         </div>
       );
-    } else {
-      if (recent !== undefined && allTime !== undefined) {
-        console.log(recent, allTime);
-        return (
-          <div className="board">
-            Leaderboard
-          </div>
-        );
-      }
     }
+    console.log(recent, allTime);
+    return (
+      <div className="board">
+        Leaderboard
+      </div>
+    );
   }
 
   render () {
     return (
       <div className="leaderboard">
-        {this.renderLeaderboard(this.props, this.state)}
+        {this.renderLeaderboard()}
       </div>
-    )
+    );
   }
 }
 
