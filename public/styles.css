@@ -3,10 +3,12 @@ body {
   padding: 0;
   font-family: sans-serif;
   background: #2f3536; }
+  body * {
+    box-sizing: border-box; }
 
 .app-header {
   height: 4vh;
-  padding: 20px;
+  padding: 30px;
   color: #ffcc54;
   text-align: center; }
   .app-header .app-title {
@@ -22,7 +24,7 @@ body {
   margin: 5px 0; }
   .contact a {
     margin: 5px 10px;
-    font-size: 30px;
+    font-size: 1.5em;
     color: #ffcc54;
     text-decoration: none; }
     .contact a:hover {
@@ -104,9 +106,38 @@ body {
   box-sizing: border-box; }
 
 table {
+  width: 100%;
   border: 1px solid #ffcc54;
   border-radius: 5px;
-  color: #ffff85; }
+  color: #ffff85;
+  font-size: 0.9em;
+  box-sizing: border-box;
+  overflow: scroll; }
+  table .rank {
+    width: 10%; }
+  table .alltime {
+    width: 20%; }
+  table .recent {
+    width: 30%; }
+  table .name {
+    width: 40%; }
+  table img {
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+    border-radius: 50px;
+    margin: 0 auto; }
+  table span.username {
+    position: relative;
+    top: 10px; }
+  table a {
+    color: #ffcc54;
+    text-decoration: none; }
+    table a:hover {
+      color: #c89b20; }
 
 thead {
   border-bottom: 1px solid #ffcc54; }
@@ -121,16 +152,26 @@ thead, tbody tr {
   width: 100%;
   table-layout: fixed; }
 
-table {
-  width: 100%; }
-
 td, th {
   padding: 10px;
   text-align: center; }
 
+tr {
+  height: 80px; }
+
+tr:nth-of-type(even) {
+  background: #585f60; }
+
 .active {
   background-color: #585f60;
   border-radius: 10px;
-  transition: background-color 1s ease 0.2s; }
+  transition: background-color 0.2s ease-in-out 0s; }
+
+.cursor {
+  cursor: pointer; }
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  table {
+    font-size: 0.9em; } }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

@@ -42,21 +42,20 @@ class Leaderboard extends React.Component {
   }
 
   _renderTable (dataToRender, selected) {
-    console.log(this.state);
     return (
       <table>
         <thead>
-          <th>#</th>
-          <th>Name</th>
+          <th className="rank">#</th>
+          <th className="name">Name</th>
           <th
-            className={'cursor ' + isActive(selected, 'recent')}
-            onClick={(e) => this.setState({selected: 'recent'})}
+            className={`cursor recent  ${isActive(selected, 'recent')}`}
+            onClick={() => this.setState({ selected: 'recent' })}
           >
             Points in last 30 Days
           </th>
           <th
-            className={'cursor ' + isActive(selected, 'allTime')}
-            onClick={(e) => this.setState({selected: 'allTime'})}
+            className={`cursor alltime  ${isActive(selected, 'allTime')}`}
+            onClick={() => this.setState({ selected: 'allTime' })}
           >
             All Time Points
           </th>
@@ -65,10 +64,19 @@ class Leaderboard extends React.Component {
           {
             (() => dataToRender.map((data, index) => (
               <tr>
-                <td>{index + 1}</td>
-                <td>{data.username}</td>
-                <td>{data.recent}</td>
-                <td>{data.alltime}</td>
+                <td className="rank">{index + 1}</td>
+                <td className="name">
+                  <a
+                    href={`https://freecodecamp.org/${data.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={data.img} alt="profile" />
+                    <span className="username">{data.username}</span>
+                  </a>
+                </td>
+                <td className="recent">{data.recent}</td>
+                <td className="alltime">{data.alltime}</td>
               </tr>
             ))
           )()
