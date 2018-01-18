@@ -1,0 +1,105 @@
+.leaderboard {
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+table {
+
+  width: 100%;
+  border:1px solid #ffcc54;
+  border-radius: 5px;
+  color: #ffff85;
+  font-size: 0.9em;
+  box-sizing: border-box;
+  overflow: scroll;
+
+  .rank {
+    width: 10%;
+  }
+
+  .alltime {
+    width: 20%;
+  }
+
+  .recent {
+    width: 30%;
+  }
+
+  .name {
+    width: 40%;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+    border-radius: 50px;
+    margin: 0 auto;
+  }
+
+  span.username {
+    position: relative;
+    top: 10px;
+  }
+
+  a {
+    color: #ffcc54;
+    text-decoration: none;
+
+    &:hover {
+      color: #c89b20;
+    }
+  }
+
+}
+
+thead {
+  border-bottom: 1px solid #ffcc54;
+}
+
+tbody {
+  display:block;
+  height:70vh;
+  overflow:auto;
+}
+
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout: fixed;
+}
+
+td, th {
+  padding: 10px;
+  text-align: center;
+}
+
+tr {
+  height: 80px;
+}
+
+tr:nth-of-type(even) {
+  background: #585f60;
+}
+
+.active {
+  background-color: #585f60;
+  border-radius: 10px;
+  transition: background-color 0.2s ease-in-out 0s;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+  table {
+    font-size: 0.9em;
+  }
+}
