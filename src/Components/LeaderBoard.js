@@ -23,10 +23,8 @@ class Leaderboard extends React.Component {
   }
 
   componentDidMount () {
-    axios.all([
-      axios.get(recentUrl),
-      axios.get(allTimeUrl)
-    ])
+    axios
+      .all([axios.get(recentUrl), axios.get(allTimeUrl)])
       .then(axios.spread((recentResponse, allTimeResponse) => {
         this.setState({
           recent: recentResponse.data,
@@ -36,7 +34,8 @@ class Leaderboard extends React.Component {
       }))
       .catch((e) => {
         this.setState({
-          error: e
+          error: e,
+          fetchingData: false
         });
       });
   }
@@ -61,8 +60,8 @@ class Leaderboard extends React.Component {
           </th>
         </thead>
         <tbody>
-          {
-            (() => dataToRender.map((data, index) => (
+          {(() =>
+            dataToRender.map((data, index) => (
               <tr>
                 <td className="rank">{index + 1}</td>
                 <td className="name">
@@ -78,9 +77,7 @@ class Leaderboard extends React.Component {
                 <td className="recent">{data.recent}</td>
                 <td className="alltime">{data.alltime}</td>
               </tr>
-            ))
-          )()
-          }
+            )))()}
         </tbody>
       </table>
     );
@@ -95,22 +92,14 @@ class Leaderboard extends React.Component {
         </div>
       );
     } else if (error) {
-      return (
-        <div className="error">
-          Oops! Something went wrong. Please try after some time.
-        </div>
-      );
+      return <div className="error">Oops! Something went wrong. Please try after some time.</div>;
     }
     const dataToRender = selected === 'recent' ? recent : allTime;
     return this.renderTable(dataToRender, selected);
   }
 
   render () {
-    return (
-      <div className="leaderboard">
-        {this.renderLeaderboard()}
-      </div>
-    );
+    return <div className="leaderboard">{this.renderLeaderboard()}</div>;
   }
 }
 
